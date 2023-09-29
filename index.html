@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>Lazy-Eye Reader</title>
+		<script>
+			function f(){
+				let text = document.getElementById("text").value;
+
+				let lengths = [4, 15, 4, 15];
+
+				let reader = document.getElementById("reader");
+				console.log(reader)
+				reader.innerHTML = "";
+
+				while(text.length > 0){
+					for(let n of lengths){
+						let segment = text.slice(0, n);
+						text = text.slice(n);
+
+						let element = document.createElement("span");
+
+						element.textContent = segment;
+
+						reader.append(element);
+					}
+				}
+			}
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#reader {
+				width: min(50rem, 100vw);
+				word-wrap: break-word;
+				overflow: auto;
+			}
+			#reader :nth-child(4n + 1), #reader :nth-child(4n + 3){
+				color: #000000;
+			}
+			#reader :nth-child(4n + 2){
+				color: #FFC000;
+			}
+			#reader :nth-child(4n){
+				color: #00FFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="color" id="left" value="#FFFF00">
+		<label for="left">Left</label>
+
+		<input type="color" id="right" value="#00FFFF">
+		<label for="right">Right</label>
+
+		<br>
+		<textarea id="text"></textarea>
+		<br>
+		<button onclick="f()">Read!</button>
+
+		<div id="reader"></div>
+	</body>
+</html>
