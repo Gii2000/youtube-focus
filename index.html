@@ -6,20 +6,28 @@
 			function f(){
 				let text = document.getElementById("text").value;
 
-				let lengths = [4, 15, 4, 15];
+				let lengths = [
+					[4, "b"],
+					[16, "l"],
+					[4, "b"],
+					[12, "r"],
+				];
 
 				let reader = document.getElementById("reader");
 				console.log(reader)
 				reader.innerHTML = "";
 
 				while(text.length > 0){
-					for(let n of lengths){
+					for(let group of lengths){
+						let n = group[0];
+
 						let segment = text.slice(0, n);
 						text = text.slice(n);
 
 						let element = document.createElement("span");
 
 						element.textContent = segment;
+						element.classList.add(group[1]);
 
 						reader.append(element);
 					}
@@ -32,27 +40,28 @@
 				padding: 0;
 			}
 			#reader {
-				width: min(50rem, 100vw);
+				margin: 0 auto;
+				width: min(35rem, 100vw);
 				word-wrap: break-word;
 				overflow: auto;
 			}
-			#reader :nth-child(4n + 1), #reader :nth-child(4n + 3){
+			#reader span.b {
 				color: #000000;
 			}
-			#reader :nth-child(4n + 2){
-				color: #FFC000;
-			}
-			#reader :nth-child(4n){
+			#reader span.l {
 				color: #00FFFF;
+			}
+			#reader span.r {
+				color: #FFC000;
 			}
 		</style>
 	</head>
 	<body>
-		<input type="color" id="left" value="#FFFF00">
-		<label for="left">Left</label>
+		<input type="color" id="l" value="#FFFF00">
+		<label for="l">l</label>
 
-		<input type="color" id="right" value="#00FFFF">
-		<label for="right">Right</label>
+		<input type="color" id="r" value="#00FFFF">
+		<label for="r">r</label>
 
 		<br>
 		<textarea id="text"></textarea>
