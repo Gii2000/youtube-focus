@@ -1,16 +1,38 @@
 {
-	"name": "Lazy Eye Reader",
+	"name": "YouTube Focus",
 	"version": "0.1",
 	"manifest_version": 3,
-	"description": "An extension to help lazy eyes by reading with bicolored glasses",
+	"description": "An extension to stop mindlessly scrolling the YouTube home page",
 	"action": {
 		"default_popup": "main.html"
 	},
 	"content_scripts": [
 		{
-			"matches": ["<all_urls>"],
-			"js": ["content.js"],
-			"run_at": "document_end"
+			"matches": [
+				"*://www.youtube.com/"
+			],
+			"js": [
+				"home.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": [
+				"*://www.youtube.com/results"
+			],
+			"js": [
+				"search_start.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": [
+				"*://www.youtube.com/results"
+			],
+			"js": [
+				"search_idle.js"
+			],
+			"run_at": "document_idle"
 		}
 	]
 }
