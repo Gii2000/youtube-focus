@@ -1,6 +1,6 @@
 {
 	"name": "YouTube Focus",
-	"version": "0.1",
+	"version": "0.2",
 	"manifest_version": 3,
 	"description": "An extension to stop mindlessly scrolling the YouTube home page",
 	"action": {
@@ -9,30 +9,13 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://www.youtube.com/"
+				"*://www.youtube.com/*"
 			],
 			"js": [
-				"home.js"
+				"youtube.js"
 			],
-			"run_at": "document_start"
-		},
-		{
-			"matches": [
-				"*://www.youtube.com/results"
-			],
-			"js": [
-				"search_start.js"
-			],
-			"run_at": "document_start"
-		},
-		{
-			"matches": [
-				"*://www.youtube.com/results"
-			],
-			"js": [
-				"search_idle.js"
-			],
-			"run_at": "document_idle"
+			"run_at": "document_idle",
+			"all_frames": true
 		}
 	]
 }
