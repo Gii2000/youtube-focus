@@ -2,7 +2,7 @@
 	"name": "YouTube Focus",
 	"version": "0.2",
 	"manifest_version": 3,
-	"description": "An extension to stop mindlessly scrolling the YouTube home page",
+	"description": "An extension to stop mindlessly scrolling through YouTube",
 	"action": {
 		"default_popup": "main.html"
 	},
@@ -12,9 +12,9 @@
 				"*://www.youtube.com/*"
 			],
 			"js": [
-				"youtube.js"
+				"content.js"
 			],
-			"run_at": "document_idle",
+			"run_at": "document_start",
 			"all_frames": true
 		}
 	]

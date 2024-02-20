@@ -5,6 +5,12 @@ setInterval(() => {
 		if (home_feed != null) {
 			home_feed.remove()
 		}
+
+		let preview = document.getElementById("video-preview")
+
+		if (preview != null) {
+			preview.remove()
+		}
 	}
 
 	let related = document.getElementById("related")
@@ -26,4 +32,4 @@ setInterval(() => {
 
 		// Todo: Find a reliable way to stop audio from shorts
 	}
-}, 50)
+}, 10)
