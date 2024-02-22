@@ -1,16 +1,18 @@
-setInterval(() => {
-	if (location.href == "https://www.youtube.com/") {
-		let home_feed = document.getElementById("contents")
+let t = setInterval(() => {
+	let loc = location.href
 
-		if (home_feed != null) {
-			home_feed.remove()
-		}
+	if (
+		!loc.startsWith("https://www.youtube.com/results") &&
+		!loc.startsWith("https://www.youtube.com/watch") &&
+		!loc.startsWith("https://www.youtube.com/feed/subscriptions") &&
+		!loc.startsWith("https://www.youtube.com/feed/history") &&
+		!loc.startsWith("https://www.youtube.com/channel") &&
+		!loc.startsWith("https://www.youtube.com/@") &&
+		!loc.startsWith("https://www.youtube.com/account")
+	) {
+		window.location.href = "https://www.youtube.com/results"
 
-		let preview = document.getElementById("video-preview")
-
-		if (preview != null) {
-			preview.remove()
-		}
+		clearInterval(t)
 	}
 
 	let related = document.getElementById("related")
@@ -23,13 +25,5 @@ setInterval(() => {
 
 	if (comments != null) {
 		comments.remove()
-	}
-
-	let shorts = document.getElementById("shorts-container")
-
-	if (shorts != null) {
-		shorts.remove()
-
-		// Todo: Find a reliable way to stop audio from shorts
 	}
 }, 10)
