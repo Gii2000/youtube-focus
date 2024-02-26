@@ -11,7 +11,7 @@ let t = setInterval(() => {
 		!loc.startsWith("https://www.youtube.com/@") &&
 		!loc.startsWith("https://www.youtube.com/account")
 	) {
-		window.location.href = "https://www.youtube.com/results"
+		window.location.replace("https://www.youtube.com/results")
 
 		clearInterval(t)
 	}
