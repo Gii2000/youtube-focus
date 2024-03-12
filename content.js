@@ -34,6 +34,12 @@ let t = setInterval(() => {
 		related.remove()
 	}
 
+	let bottom_related = document.getElementById("bottom-grid")
+
+	if (bottom_related != null) {
+		bottom_related.remove()
+	}
+
 	let comments = document.getElementById("comments")
 
 	if (comments != null && comments_div == null) {
