@@ -43,38 +43,43 @@ let t = setInterval(() => {
 	let comments = document.getElementById("comments")
 
 	if (comments != null && comments_div == null) {
-		comments_div = comments
-
-		if (comments_button != null) {
-			comments_button.remove()
+		if (true) {
+			comments.remove()
 		}
+		else {
+			comments_div = comments
 
-		comments_button = document.createElement("div")
-		comments_button.classList.add("item")
-		comments_button.style.cssText = `
-			padding: 6px;
-			color: var(--yt-spec-text-primary);
-			background: var(--yt-spec-badge-chip-background);
-			border-radius: 8px;
-			text-align: center;
-			font-size: 1.4rem;
-			font-weight: 400;
-			cursor: pointer;
-		`
-
-		comments.parentElement.insertBefore(comments_button, comments)
-
-		let hide_comments = () => {
-			comments.style.display = "none"
-			comments_button.textContent = "Show comments"
-			comments_button.onclick = () => {
-				comments.style.display = "block"
-				comments_button.textContent = "Hide comments"
-
-				comments_button.onclick = hide_comments
+			if (comments_button != null) {
+				comments_button.remove()
 			}
-		}
 
-		hide_comments()
+			comments_button = document.createElement("div")
+			comments_button.classList.add("item")
+			comments_button.style.cssText = `
+				padding: 6px;
+				color: var(--yt-spec-text-primary);
+				background: var(--yt-spec-badge-chip-background);
+				border-radius: 8px;
+				text-align: center;
+				font-size: 1.4rem;
+				font-weight: 400;
+				cursor: pointer;
+			`
+
+			comments.parentElement.insertBefore(comments_button, comments)
+
+			let hide_comments = () => {
+				comments.style.display = "none"
+				comments_button.textContent = "Show comments"
+				comments_button.onclick = () => {
+					comments.style.display = "block"
+					comments_button.textContent = "Hide comments"
+
+					comments_button.onclick = hide_comments
+				}
+			}
+
+			hide_comments()
+		}
 	}
 }, 10)
