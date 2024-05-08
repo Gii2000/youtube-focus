@@ -1,6 +1,9 @@
 let comments_div = null
 let comments_button = null
+
 let old_loc = null
+
+let show_related, allow_comments
 
 let t = setInterval(() => {
 	let loc = location.href
@@ -24,26 +27,25 @@ let t = setInterval(() => {
 			clearInterval(t)
 		}
 
+		chrome.storage.sync.get(['show_related', 'allow_comments'], r => {
+			show_related = r.show_related ?? false
+			allow_comments = r.allow_comments ?? true
+		});
+
 		old_loc = loc
 		comments_div = null
 	}
 
-	let related = document.getElementById("related")
+	let related = document.getElementById("related") ?? document.getElementById("bottom-grid")
 
-	if (related != null) {
+	if (related && !show_related) {
 		related.remove()
-	}
-
-	let bottom_related = document.getElementById("bottom-grid")
-
-	if (bottom_related != null) {
-		bottom_related.remove()
 	}
 
 	let comments = document.getElementById("comments")
 
 	if (comments != null && comments_div == null) {
-		if (true) {
+		if (!allow_comments) {
 			comments.remove()
 		}
 		else {
