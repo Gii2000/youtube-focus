@@ -1,6 +1,6 @@
 {
 	"name": "YouTube Focus",
-	"version": "0.6",
+	"version": "0.7",
 	"manifest_version": 3,
 	"description": "An extension to stop mindlessly scrolling through YouTube",
 	"action": {

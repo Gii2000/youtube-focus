@@ -3,12 +3,28 @@ let comments_button = null
 
 let old_loc = null
 
-let show_related, allow_comments
+let show_related, allow_comments, allow_shorts
+
+chrome.storage.sync.get(['show_related', 'allow_comments', 'allow_shorts'], r => {
+	show_related = r.show_related ?? false
+	allow_comments = r.allow_comments ?? true
+	allow_shorts = r.allow_shorts ?? false
+});
 
 let t = setInterval(() => {
+	if (show_related == null) {
+		return;
+	}
+
 	let loc = location.href
 
 	if (loc != old_loc) {
+		chrome.storage.sync.get(['show_related', 'allow_comments', 'allow_shorts'], r => {
+			show_related = r.show_related ?? false
+			allow_comments = r.allow_comments ?? true
+			allow_shorts = r.allow_shorts ?? false
+		});
+
 		if (
 			!loc.startsWith("https://www.youtube.com/results") &&
 			!loc.startsWith("https://www.youtube.com/watch") &&
@@ -20,20 +36,32 @@ let t = setInterval(() => {
 			!loc.startsWith("https://www.youtube.com/@") &&
 			!loc.startsWith("https://www.youtube.com/user") &&
 			!loc.startsWith("https://www.youtube.com/account") &&
-			!loc.startsWith("https://www.youtube.com/live_chat_replay")
+			!loc.startsWith("https://www.youtube.com/live_chat_replay") &&
+			!(loc.startsWith("https://www.youtube.com/shorts") && allow_shorts)
 		) {
+			console.log(loc.startsWith("https://www.youtube.com/shorts"), allow_shorts)
+
 			window.location.replace("https://www.youtube.com/results")
 
 			clearInterval(t)
 		}
 
-		chrome.storage.sync.get(['show_related', 'allow_comments'], r => {
-			show_related = r.show_related ?? false
-			allow_comments = r.allow_comments ?? true
-		});
-
 		old_loc = loc
 		comments_div = null
+	}
+
+	if (loc.startsWith("https://www.youtube.com/shorts") && !show_related) {
+		let shorts_view = document.getElementById("shorts-container")
+
+		if (shorts_view != null) {
+			shorts_view.style.overflowY = "hidden"
+		}
+
+		let nav_buttons = document.getElementsByClassName("navigation-button")
+
+		for (let button of nav_buttons) {
+			button.remove()
+		}
 	}
 
 	let related = document.getElementById("related") ?? document.getElementById("bottom-grid")

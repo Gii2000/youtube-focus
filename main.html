@@ -1,102 +1,119 @@
 <html lang="en">
 
-<head>
-	<meta charset="utf-8" />
-	<style>
-		body {
-			width: 15rem;
-		}
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			body {
+				width: 15rem;
+			}
 
-		label {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			cursor: pointer;
-			font-size: 1rem;
-			padding: 0;
-			height: 2rem;
-		}
+			label {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				cursor: pointer;
+				font-size: 1rem;
+				padding: 0;
+				height: 2rem;
+			}
 
-		label>div {
-			position: relative;
-			display: inline-block;
-			width: 3rem;
-			height: 1.5rem;
-		}
+			label>div {
+				position: relative;
+				display: inline-block;
+				width: 3rem;
+				height: 1.5rem;
+			}
 
-		label input {
-			display: none;
-		}
+			label input {
+				display: none;
+			}
 
-		label>div>div {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-color: #ccc;
-			transition: .1s;
-			border-radius: 1rem;
-		}
+			label>div>div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ccc;
+				transition: .1s;
+				border-radius: 1rem;
+			}
 
-		label>div>div:before {
-			position: absolute;
-			content: "";
-			height: 1rem;
-			width: 1rem;
-			left: 0.25rem;
-			top: 0.25rem;
-			background-color: white;
-			transition: .1s;
-			border-radius: 50%;
-		}
+			label>div>div:before {
+				position: absolute;
+				content: "";
+				height: 1rem;
+				width: 1rem;
+				left: 0.25rem;
+				top: 0.25rem;
+				background-color: white;
+				transition: .1s;
+				border-radius: 50%;
+			}
 
-		input:checked+div {
-			background-color: #2196F3;
-		}
+			input:checked+div {
+				background-color: #2196F3;
+			}
 
-		input:checked+div:before {
-			transform: translateX(1.5rem);
-		}
-	</style>
-	<script src="script.js" defer></script>
-</head>
+			input:checked+div:before {
+				transform: translateX(1.5rem);
+			}
 
-<body>
-	<h1>YouTube - Focused</h1>
+			div>p {
+				margin: 0;
+				padding-left: 1rem;
+			}
+		</style>
+		<script src="script.js" defer></script>
+	</head>
 
-	<hr>
+	<body>
+		<h1>YouTube - Focused</h1>
 
-	<p>
-		This plug-in redirects the YouTube Home and Shorts pages to the Search page,
-		to stop you from mindlessly scrolling!
-	</p>
-	<p>
-		Additionally, related video suggestions can be removed and comments hidden.
-	</p>
-	<p>
-		Enjoy a distraction-free YouTube!
-	</p>
+		<hr>
 
-	<hr>
-	<label>
-		<p>Show related videos</p>
+		<p>
+			This plug-in redirects the YouTube Home and Shorts pages to the Search page,
+			to stop you from mindlessly scrolling!
+		</p>
+		<p>
+			Additionally, related video suggestions can be removed and comments hidden.
+		</p>
+		<p>
+			Enjoy a distraction-free YouTube!
+		</p>
 
+		<hr>
+		<label>
+			<p>Show related videos</p>
+
+			<div>
+				<input id="show_related" type="checkbox">
+				<div></div>
+			</div>
+		</label>
+		<label>
+			<p>Allow comments</p>
+
+			<div>
+				<input id="allow_comments" type="checkbox">
+				<div></div>
+			</div>
+		</label>
 		<div>
-			<input id="show_related" type="checkbox">
-			<div></div>
-		</div>
-	</label><label>
-		<p>Allow comments</p>
+			<label>
+				<p>Allow shorts</p>
 
-		<div>
-			<input id="allow_comments" type="checkbox">
-			<div></div>
+				<div>
+					<input id="allow_shorts" type="checkbox">
+					<div></div>
+				</div>
+			</label>
+			<p>Scrolling is locked if "Show related videos" is disabled</p>
 		</div>
-	</label>
 
-	(A refresh may be necessary)
-</body>
+		<p>(A page refresh may be necessary)</p>
+	</body>
 
 </html>
