@@ -30,7 +30,7 @@ let t = setInterval(() => {
 			!loc.startsWith("https://www.youtube.com/watch") &&
 			!loc.startsWith("https://www.youtube.com/feed/subscriptions") &&
 			!loc.startsWith("https://www.youtube.com/feed/history") &&
-			!loc.startsWith("https://www.youtube.com/channel") &&
+			!loc.startsWith("https://www.youtube.com/c") &&
 			!loc.startsWith("https://www.youtube.com/playlist") &&
 			!loc.startsWith("https://www.youtube.com/embed") &&
 			!loc.startsWith("https://www.youtube.com/@") &&
