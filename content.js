@@ -26,21 +26,20 @@ let t = setInterval(() => {
 		});
 
 		if (
-			!loc.startsWith("https://www.youtube.com/results") &&
-			!loc.startsWith("https://www.youtube.com/watch") &&
-			!loc.startsWith("https://www.youtube.com/feed/subscriptions") &&
-			!loc.startsWith("https://www.youtube.com/feed/history") &&
-			!loc.startsWith("https://www.youtube.com/c") &&
-			!loc.startsWith("https://www.youtube.com/playlist") &&
-			!loc.startsWith("https://www.youtube.com/embed") &&
-			!loc.startsWith("https://www.youtube.com/@") &&
-			!loc.startsWith("https://www.youtube.com/user") &&
-			!loc.startsWith("https://www.youtube.com/account") &&
-			!loc.startsWith("https://www.youtube.com/live_chat_replay") &&
-			!(loc.startsWith("https://www.youtube.com/shorts") && allow_shorts)
+			loc == "https://www.youtube.com" ||
+			loc == "https://www.youtube.com/" ||
+			loc.startsWith("https://www.youtube.com/channel/UC") ||
+			loc.startsWith("https://www.youtube.com/feed") && !(
+				loc.startsWith("https://www.youtube.com/feed/you") ||
+				loc.startsWith("https://www.youtube.com/feed/playlists") ||
+				loc.startsWith("https://www.youtube.com/feed/history") ||
+				loc.startsWith("https://www.youtube.com/feed/subscriptions")
+			) ||
+			loc.startsWith("https://www.youtube.com/gaming") ||
+			loc.startsWith("https://www.youtube.com/podcasts") ||
+			loc.startsWith("https://www.youtube.com/playables") ||
+			loc.startsWith("https://www.youtube.com/shorts") && !allow_shorts
 		) {
-			console.log(loc.startsWith("https://www.youtube.com/shorts"), allow_shorts)
-
 			window.location.replace("https://www.youtube.com/results")
 
 			clearInterval(t)
