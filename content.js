@@ -28,7 +28,12 @@ let t = setInterval(() => {
 		if (
 			loc == "https://www.youtube.com" ||
 			loc == "https://www.youtube.com/" ||
-			loc.startsWith("https://www.youtube.com/channel/UC") ||
+			loc.startsWith("https://www.youtube.com/channel/UCkYQyvc_i9hXEo4xic9Hh2g") ||
+			loc.startsWith("https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ") ||
+			loc.startsWith("https://www.youtube.com/channel/UC4R8DWoMoI7CAwX8_LjQHig") ||
+			loc.startsWith("https://www.youtube.com/channel/UCYfdidRxbB8Qhf0Nx7ioOYw") ||
+			loc.startsWith("https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw") ||
+			loc.startsWith("https://www.youtube.com/channel/UCrpQ4p1Ql_hG8rKXIKM1MOQ") ||
 			loc.startsWith("https://www.youtube.com/feed") && !(
 				loc.startsWith("https://www.youtube.com/feed/you") ||
 				loc.startsWith("https://www.youtube.com/feed/playlists") ||
